@@ -21,6 +21,10 @@ RSpec.describe ResultsController, :type => :controller do
       expect(JSON.parse(response.body).all? { |result| result["count"].present? }).to be_truthy
     end
 
+    it "should return the correct keys" do
+      get :index
+      expect(JSON.parse(response.body).first.keys).to eq(["id", "name", "description","author", "count"])
+    end
   end
 
 end
