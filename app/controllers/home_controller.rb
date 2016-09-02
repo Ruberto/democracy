@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def topics
   end
 
-  def ballots
+  def ballot
   end
 
   def results

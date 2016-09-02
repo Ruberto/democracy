@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  return if $('#new-topic-form').length == 0
   # Post topic to API
   $('#new-topic-form').on 'submit', (e) ->
     e.preventDefault()
     formdata = $(this).serialize()
-    console.log formdata
     $.ajax
       type: 'post'
       url: $(this).attr('action')
@@ -22,7 +22,6 @@ $ ->
   # Retrieve topics from API
   $.get '/topics'
   .done (topics) ->
-    console.log topics
     _.each topics, (topic) ->
       addTopic(topic)
 

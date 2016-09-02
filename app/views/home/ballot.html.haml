@@ -1,0 +1,8 @@
+%script#topic-option-template{type: 'text/template'}
+  %option{value: '{{id}}'} {{ name }} - {{ author }}
+
+= form_tag '/ballots', id: 'ballot-form' do
+  = select_tag 'ballot[topic_ids][]', '', include_blank: true
+  = select_tag 'ballot[topic_ids][]', '', include_blank: true
+  = select_tag 'ballot[topic_ids][]', '', include_blank: true
+  = submit_tag 'Vote'
