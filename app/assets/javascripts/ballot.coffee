@@ -8,12 +8,13 @@ $ ->
       dataType: 'json'
       data: formdata
       success: (topic) ->
-        window.location.replace('/ballot/results')
+        window.location = 'https://www.elections.org.za/LGEDashBoard2016/'
       error: (e) ->
         if typeof(e.responseJSON.ip_address) == 'undefined'
           alert("You should vote for 3 options!")
         else
           alert("You have already voted!")
+          window.location = 'https://www.elections.org.za/LGEDashBoard2016/'
 
 
   return if $('#ballot-form').length == 0
