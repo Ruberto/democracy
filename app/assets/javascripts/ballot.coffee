@@ -10,7 +10,10 @@ $ ->
       success: (topic) ->
         window.location.replace('/ballot/results')
       error: (e) ->
-        alert("You should vote for 3 options!")
+        if typeof(e.responseJSON.ip_address) == 'undefined'
+          alert("You should vote for 3 options!")
+        else
+          alert("You have already voted!")
 
 
   return if $('#ballot-form').length == 0
