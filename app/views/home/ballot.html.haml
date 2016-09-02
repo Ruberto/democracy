@@ -1,8 +1,17 @@
 %script#topic-option-template{type: 'text/template'}
   %option{value: '{{id}}'} {{ name }} - {{ author }}
 
-= form_tag '/ballots', id: 'ballot-form' do
-  = select_tag 'ballot[topic_ids][]', '', include_blank: true
-  = select_tag 'ballot[topic_ids][]', '', include_blank: true
-  = select_tag 'ballot[topic_ids][]', '', include_blank: true
-  = submit_tag 'Vote'
+%div.row
+  %div.col-md-6
+    %h1 Cast your vote
+
+= form_tag '/ballots', id: 'ballot-form', class: "form-horizontal" do
+  %div.row
+    %div.col-md-3
+      = select_tag 'ballot[topic_ids][]', '', prompt: "Vote 1", class: "form-control"
+    %div.col-md-3
+      = select_tag 'ballot[topic_ids][]', '', prompt: "Vote 2", class: "form-control"
+    %div.col-md-3
+      = select_tag 'ballot[topic_ids][]', '', prompt: "Vote 1", class: "form-control"
+    %div.col-md-3
+      = submit_tag 'Vote', class: "btn btn-primary"

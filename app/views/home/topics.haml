@@ -1,11 +1,20 @@
 %script#topic-template{type: 'text/template'}
-  %li {{ name }} - {{ author }}
+  %li.list-group-item
+    %strong {{ name }}
+    %br
+    %em -- {{ author }}
 
-%h1 Topics
+%div.row
+  %div.col-md-6
+    %h1 Topics
+%div.row
+  %div.col-md-6
+    = form_tag "/topics", id: "new-topic-form", class: "form-inline" do
+      = text_field_tag 'topic[name]', nil, placeholder: 'Topic', required: true, class: "form-control"
+      = text_field_tag 'topic[author]', nil, placeholder: 'Author', required: true, class: "form-control"
+      = submit_tag 'Add Topic', data: { disable_with: false }, class: "btn btn-primary"
 
-= form_tag "/topics", id: "new-topic-form" do
-  = text_field_tag 'topic[name]', nil, placeholder: 'Topic', required: true
-  = text_field_tag 'topic[author]', nil, placeholder: 'Your Name', required: true
-  = submit_tag 'Save', data: { disable_with: false }
-
-%ul#topics
+%br
+%div.row
+  %div.col-md-6
+    %ul#topics.list-group
