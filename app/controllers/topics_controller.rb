@@ -4,7 +4,11 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.open
+    respond_to do |f|
+      f.json { render json: @topics }
+      f.html { render json: @topics }
+    end
   end
 
   # GET /topics/1
