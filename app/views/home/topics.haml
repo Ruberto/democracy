@@ -3,4 +3,9 @@
 
 %h1 Topics
 
+= form_tag '/lols', id: "new-topic-form" do
+  = text_field_tag 'topic[name]', nil, placeholder: 'Topic'
+  = text_field_tag 'topic[author]', nil, placeholder: 'Your Name'
+  = submit_tag 'Save', data: { disable_with: false }
+
 %ul#topics

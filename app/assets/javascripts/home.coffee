@@ -3,6 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  # Post topic to API
+  $('#new-topic-form').on 'submit', (e) ->
+    formdata = $(this).serialize()
+
+    e.preventDefault()
+    console.log formdata
+    $.ajax
+      type: 'post'
+      url: $(this).attr('action')
+      datatype: 'JSON'
+      success: (e) ->
+        console.log e.message
+      error: (e) ->
+        console.log e.message
+
+  # Retrieve topics from API
   $.get '/lol'
   .done (topics) ->
     console.log topics

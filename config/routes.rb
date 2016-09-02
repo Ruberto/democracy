@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/ballots', to: 'home#ballots'
   get '/results', to: 'home#results'
   get '/lol', to: 'home#lol'
+  post '/lols', to: 'home#lols'
 end
