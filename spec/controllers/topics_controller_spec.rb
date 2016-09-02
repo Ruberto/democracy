@@ -10,6 +10,7 @@ RSpec.describe TopicsController, :type => :controller do
 
     it "returns all open topics" do
       get :index
+      expect(JSON.parse(response.body).length).to eq 1
       expect(JSON.parse(response.body).first["state"]).to eq "open"
     end
   end
