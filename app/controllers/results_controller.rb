@@ -23,8 +23,8 @@ class ResultsController < ApplicationController
 
   def include_vote_count_in_topics(counts)
     counts.map do |k,v|
-      bleh = Topic.find(k).attributes.merge({ count: v }).symbolize_keys
-      bleh.delete_if{ |k,v| [:created_at, :updated_at, :state].include? k}
+      result = Topic.find(k).attributes.merge({ count: v }).symbolize_keys
+      result.delete_if{ |k,v| [:created_at, :updated_at, :state].include? k}
     end
   end
 
