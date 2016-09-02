@@ -8,7 +8,7 @@ $ ->
       dataType: 'json'
       data: formdata
       success: (topic) ->
-        window.location('/results')
+        window.location.replace('/ballot/results')
       error: (e) ->
         alert("You should vote for 3 options!")
 

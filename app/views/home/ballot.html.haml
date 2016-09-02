@@ -7,11 +7,13 @@
 
 = form_tag '/ballots', id: 'ballot-form', class: "form-horizontal" do
   %div.row
+    %div.col-md-2
+      = text_field_tag 'ballot[name]', nil, placeholder: 'Topic', required: true, class: "form-control"
     %div.col-md-3
       = select_tag 'ballot[topic_ids][]', '', prompt: "Vote 1", class: "form-control"
     %div.col-md-3
       = select_tag 'ballot[topic_ids][]', '', prompt: "Vote 2", class: "form-control"
     %div.col-md-3
       = select_tag 'ballot[topic_ids][]', '', prompt: "Vote 1", class: "form-control"
-    %div.col-md-3
+    %div.col-md-1
       = submit_tag 'Vote', class: "btn btn-primary"

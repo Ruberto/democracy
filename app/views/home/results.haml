@@ -1,0 +1,19 @@
+%script#result-template{type: 'text/template'}
+  %li.list-group-item
+    %span.badge
+      {{count}}
+    %strong 
+      {{ name }}
+    %br
+    %em -- {{ author }}
+
+
+%div.row
+  %div.col-md-6
+    %h1
+      Live results
+      %small just hit refresh
+
+%div.row
+  %div.col-md-6
+    %ul#results.list-group
