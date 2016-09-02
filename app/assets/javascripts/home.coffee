@@ -5,26 +5,29 @@
 $ ->
   # Post topic to API
   $('#new-topic-form').on 'submit', (e) ->
-    formdata = $(this).serialize()
-
     e.preventDefault()
+    formdata = $(this).serialize()
     console.log formdata
     $.ajax
       type: 'post'
       url: $(this).attr('action')
-      datatype: 'JSON'
-      success: (e) ->
-        console.log e.message
+      dataType: 'json'
+      data: formdata
+      success: (topic) ->
+        addTopic(topic)
+        $('#new-topic-form input[type=text]').val('')
       error: (e) ->
-        console.log e.message
+        alert("Both name and author needs to be present!")
 
   # Retrieve topics from API
-  $.get '/lol'
+  $.get '/topics'
   .done (topics) ->
     console.log topics
     _.each topics, (topic) ->
-      template = _.template $('#topic-template').html()
-      topicHtml = template topic
-      $("#topics").append topicHtml
-      
-      
+      addTopic(topic)
+
+addTopic = (topic) ->
+  template = _.template $('#topic-template').html()
+  topicHtml = template topic
+  $("#topics").prepend topicHtml
+
