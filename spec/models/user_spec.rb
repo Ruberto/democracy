@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 description 'User model' do
   context 'it creates an user' do
