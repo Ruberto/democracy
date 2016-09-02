@@ -16,7 +16,7 @@ class ResultsController < ApplicationController
     topic_ids.each{ |topic_id| counts[topic_id] += 1}
     results = counts.map do |k,v|
       bleh = Topic.find(k).attributes.merge({ count: v }).symbolize_keys
-      bleh.delete_if{ |k,v| [:created_at, :updated_at, :status].include? k}
+      bleh.delete_if{ |k,v| [:created_at, :updated_at, :state].include? k}
     end
   end
 
